@@ -964,8 +964,350 @@ window.fallbackVocabulary_math =
 [100,"Unit Circle","單位圓"]
 ];
 
-// --------------------------------------------------------------------------------------------------
-// --------------------------------------------------------------------------------------------------
+// 內置的詞彙列表-------------------------------------------------------------------------------------
+window.fallbackVocabulary_mathTest = 
+[
+[1,"decimal","小數的"],
+[2,"express","表達"],
+[3,"notation","記號 or 標記法"],
+[4,"decimal notation","十進位制記數法"],
+[5,"thousandths","第一千 or 千分之一"],
+[6,"Tenths","十分之一"],
+[7,"Hundredths","百分之一"],
+[8,"Ten-thousandths","萬分之一"],
+[9,"Millionths","百萬分之一"],
+[10,"place value","[數]位值 例如百位數and千分位數"],
+[11,"Unit conversion","單位換算"],
+[12,"prime factor","素因數_質因數"],
+[13,"depreciate","跌價"],
+[14,"cubic meter","立方米"],
+[15,"square meter","平方米"],
+[16,"litre","升"],
+[17,"least common multiple (LCM)","最小公倍數"],
+[18,"expended form","展開形式 1510 = 1000+500+10+1"],
+[19,"2 的-2次方","為 1/4"],
+[20,"(–6) ÷ 2 × 3","A:-9 (除法要按順序!! 除非轉化為乘法)"],
+[21,"700.763763","Seven hundred and seven hundred sixty-three thousand, seven hundred sixty-three millionths"]
+];
+
+// 內置的詞彙列表-------------------------------------------------------------------------------------
+window.fallbackVocabulary_vegetableAndFruit = 
+[
+[1,"apple","蘋果"],
+[2,"banana","香蕉"],
+[3,"orange","橙子"],
+[4,"grape","葡萄"],
+[5,"strawberry","草莓"],
+[6,"watermelon","西瓜"],
+[7,"lemon","檸檬"],
+[8,"peach","桃子"],
+[9,"pear","梨子"],
+[10,"cherry","櫻桃"],
+[11,"pineapple","鳳梨"],
+[12,"mango","芒果"],
+[13,"blueberry","藍莓"],
+[14,"kiwi","奇異果"],
+[15,"plum","李子"],
+[16,"apricot","杏子"],
+[17,"cantaloupe","哈密瓜"],
+[18,"papaya","木瓜"],
+[19,"pomegranate","石榴"],
+[20,"blackberry","黑莓"],
+[21,"raspberry","覆盆子"],
+[22,"avocado","酪梨"],
+[23,"tomato","番茄"],
+[24,"cucumber","黃瓜"],
+[25,"carrot","胡蘿蔔"],
+[26,"broccoli","西蘭花"],
+[27,"spinach","菠菜"],
+[28,"lettuce","生菜"],
+[29,"cabbage","捲心菜"],
+[30,"cauliflower","花椰菜"],
+[31,"zucchini","西葫蘆"],
+[32,"onion","洋蔥"],
+[33,"garlic","大蒜"],
+[34,"potato","馬鈴薯"],
+[35,"sweet potato","地瓜"],
+[36,"pumpkin","南瓜"],
+[37,"corn","玉米"],
+[38,"eggplant","茄子"],
+[39,"bell pepper","甜椒"],
+[40,"chili pepper","辣椒"],
+[41,"ginger","生薑"],
+[42,"beetroot","甜菜根"],
+[43,"radish","蘿蔔"],
+[44,"celery","芹菜"],
+[45,"asparagus","蘆筍"],
+[46,"artichoke","朝鮮薊"],
+[47,"pea","豌豆"],
+[48,"green bean","四季豆"],
+[49,"mushroom","蘑菇"],
+[50,"okra","秋葵"],
+[51,"kale","羽衣甘藍"],
+[52,"brussels sprout","孢子甘藍"],
+[53,"arugula","芝麻葉"],
+[54,"parsley","香菜"],
+[55,"basil","羅勒"],
+[56,"cilantro","芫荽"],
+[57,"dill","蒔蘿"],
+[58,"thyme","百里香"],
+[59,"rosemary","迷迭香"],
+[60,"mint","薄荷"],
+[61,"bay leaf","月桂葉"],
+[62,"chard","瑞士甜菜"],
+[63,"turnip","蕪菁"],
+[64,"parsnip","歐洲防風草"],
+[65,"leek","韭蔥"],
+[66,"scallion","青蔥"],
+[67,"shallot","紅蔥頭"],
+[68,"yam","山藥"],
+[69,"butternut squash","冬南瓜"],
+[70,"acorn squash","橡實南瓜"],
+[71,"jackfruit","菠蘿蜜"],
+[72,"durian","榴槤"],
+[73,"lychee","荔枝"],
+[74,"longan","龍眼"],
+[75,"starfruit","楊桃"],
+[76,"dragon fruit","火龍果"],
+[77,"passion fruit","百香果"],
+[78,"guava","芭樂"],
+[79,"fig","無花果"],
+[80,"date","棗子"],
+[81,"persimmon","柿子"],
+[82,"coconut","椰子"],
+[83,"olive","橄欖"],
+[84,"cantaloupe","香瓜"],
+[85,"honeydew melon","蜜瓜"],
+[86,"nectarine","油桃"],
+[87,"tangerine","橘子"],
+[88,"lime","萊姆"],
+[89,"grapefruit","葡萄柚"],
+[90,"satsuma","無籽蜜柑"],
+[91,"blood orange","血橙"],
+[92,"cranberry","蔓越莓"],
+[93,"currant","紅醋栗"],
+[94,"gooseberry","醋栗"],
+[95,"mulberry","桑葚"],
+[96,"soursop","刺果番荔枝"],
+[97,"tamarind","羅望子"],
+[98,"rhubarb","大黃"],
+[99,"water chestnut","荸薺"],
+[100,"lotus root","蓮藕"]
+]
+
+// 內置的詞彙列表-------------------------------------------------------------------------------------
+
+window.fallbackVocabulary_HouseholdAppliances = 
+[
+[1,"blender","攪拌機"],
+[2,"toaster","烤麵包機"],
+[3,"microwave","微波爐"],
+[4,"dishwasher","洗碗機"],
+[5,"coffee maker","咖啡機"],
+[6,"food processor","食物處理機"],
+[7,"pressure cooker","壓力鍋"],
+[8,"slow cooker","慢燉鍋"],
+[9,"rice cooker","電飯鍋"],
+[10,"air fryer","氣炸鍋"],
+[11,"garbage disposal","廚餘處理機"],
+[12,"range hood","抽油煙機"],
+[13,"induction cooktop","電磁爐"],
+[14,"kettle","電熱水壺"],
+[15,"griddle","平底煎鍋"],
+[16,"cast iron skillet","鑄鐵煎鍋"],
+[17,"baking sheet","烤盤"],
+[18,"cutting board","砧板"],
+[19,"colander","濾水器"],
+[20,"measuring cup","量杯"],
+[21,"measuring spoon","量匙"],
+[22,"rolling pin","擀麵杖"],
+[23,"whisk","打蛋器"],
+[24,"ladle","湯勺"],
+[25,"tongs","夾子"],
+[26,"grater","刨絲器"],
+[27,"peeler","削皮器"],
+[28,"ice cube tray","製冰盒"],
+[29,"can opener","開罐器"],
+[30,"corkscrew","螺旋開瓶器"],
+[31,"funnel","漏斗"],
+[32,"mortar and pestle","研缽和杵"],
+[33,"salad spinner","沙拉脫水器"],
+[34,"trivet","鍋墊"],
+[35,"pot holder","隔熱墊"],
+[36,"oven mitt","烤箱手套"],
+[37,"timer","定時器"],
+[38,"kitchen scale","廚房秤"],
+[39,"bread box","麵包箱"],
+[40,"spice rack","香料架"],
+[41,"bottle opener","瓶蓋開瓶器"],
+[42,"butter dish","奶油盤"],
+[43,"cake stand","蛋糕架"],
+[44,"egg slicer","雞蛋切片器"],
+[45,"soup ladle","湯勺"],
+[46,"meat thermometer","肉類溫度計"],
+[47,"pastry brush","糕點刷"],
+[48,"casserole dish","燉鍋"],
+[49,"cookie cutter","餅乾模具"],
+[50,"food storage container","食物儲存容器"],
+[51,"broom","掃帚"],
+[52,"dustpan","簸箕"],
+[53,"vacuum cleaner","吸塵器"],
+[54,"mop","拖把"],
+[55,"bucket","水桶"],
+[56,"laundry hamper","洗衣籃"],
+[57,"ironing board","熨衣板"],
+[58,"clothesline","晾衣繩"],
+[59,"garment steamer","衣物蒸汽機"],
+[60,"curtain rod","窗簾桿"],
+[61,"blinds","百葉窗"],
+[62,"shower curtain","浴簾"],
+[63,"bath mat","浴墊"],
+[64,"toilet brush","馬桶刷"],
+[65,"plunger","馬桶吸"],
+[66,"medicine cabinet","藥櫃"],
+[67,"vanity mirror","化妝鏡"],
+[68,"towel rack","毛巾架"],
+[69,"linen closet","亞麻櫃"],
+[70,"coat rack","衣帽架"],
+[71,"shoe rack","鞋架"],
+[72,"umbrella stand","傘架"],
+[73,"fire extinguisher","滅火器"],
+[74,"smoke detector","煙霧探測器"],
+[75,"carbon monoxide detector","一氧化碳探測器"],
+[76,"thermostat","恆溫器"],
+[77,"ceiling fan","吊扇"],
+[78,"chandelier","枝形吊燈"],
+[79,"wall sconce","壁燈"],
+[80,"floor lamp","落地燈"],
+[81,"power strip","延長插座"],
+[82,"surge protector","突波保護器"],
+[83,"home security system","家庭安防系統"],
+[84,"doorbell camera","門鈴攝影機"],
+[85,"window screen","紗窗"],
+[86,"storm door","防風門"],
+[87,"gutter","排水溝"],
+[88,"downspout","排水管"],
+[89,"attic","閣樓"],
+[90,"basement","地下室"],
+[91,"crawl space","爬行空間"],
+[92,"garage door opener","車庫門開啟器"],
+[93,"sprinkler system","灑水系統"],
+[94,"water heater","熱水器"],
+[95,"fuse box","保險絲盒"],
+[96,"circuit breaker","斷路器"],
+[97,"sump pump","污水泵"],
+[98,"window blinds","窗簾"],
+[99,"dehumidifier","除濕機"],
+[100,"air purifier","空氣淨化器"]
+];
+
+// 內置的詞彙列表-------------------------------------------------------------------------------------
+
+window.fallbackVocabulary_Medical = 
+[
+[1,"appointment","預約"],
+[2,"prescription","處方"],
+[3,"symptom","症狀"],
+[4,"diagnosis","診斷"],
+[5,"treatment","治療"],
+[6,"medication","藥物"],
+[7,"dosage","劑量"],
+[8,"allergy","過敏"],
+[9,"side effect","副作用"],
+[10,"referral","轉診"],
+[11,"specialist","專科醫生"],
+[12,"primary care","初級醫療"],
+[13,"general practitioner","全科醫生"],
+[14,"emergency room","急診室"],
+[15,"urgent care","緊急護理"],
+[16,"check-up","體檢"],
+[17,"physical examination","身體檢查"],
+[18,"blood test","血液檢查"],
+[19,"x-ray","X光"],
+[20,"ultrasound","超聲波檢查"],
+[21,"MRI","核磁共振"],
+[22,"CT scan","電腦斷層掃描"],
+[23,"vaccination","疫苗接種"],
+[24,"immunization","免疫接種"],
+[25,"flu shot","流感疫苗"],
+[26,"booster shot","加強針"],
+[27,"painkiller","止痛藥"],
+[28,"antibiotic","抗生素"],
+[29,"antihistamine","抗組胺藥"],
+[30,"ointment","藥膏"],
+[31,"bandage","繃帶"],
+[32,"stitches","縫針"],
+[33,"cast","石膏"],
+[34,"crutches","拐杖"],
+[35,"wheelchair","輪椅"],
+[36,"inhaler","吸入器"],
+[37,"thermometer","溫度計"],
+[38,"blood pressure cuff","血壓計"],
+[39,"stethoscope","聽診器"],
+[40,"syringe","注射器"],
+[41,"IV drip","點滴"],
+[42,"anesthesia","麻醉"],
+[43,"local anesthesia","局部麻醉"],
+[44,"general anesthesia","全身麻醉"],
+[45,"surgery","手術"],
+[46,"operation","外科手術"],
+[47,"recovery","康復"],
+[48,"discharge","出院"],
+[49,"hospitalization","住院"],
+[51,"surgeon","外科醫生"],
+[52,"pharmacist","藥劑師"],
+[53,"radiologist","放射科醫生"],
+[54,"dermatologist","皮膚科醫生"],
+[55,"cardiologist","心臟科醫生"],
+[56,"neurologist","神經科醫生"],
+[57,"pediatrician","兒科醫生"],
+[58,"gynecologist","婦科醫生"],
+[59,"ophthalmologist","眼科醫生"],
+[60,"optometrist","驗光師"],
+[61,"dentist","牙醫"],
+[62,"orthodontist","正牙醫生"],
+[63,"psychiatrist","精神科醫生"],
+[64,"psychologist","心理學家"],
+[65,"therapist","治療師"],
+[66,"counselor","諮詢師"],
+[67,"blood sugar","血糖"],
+[68,"cholesterol","膽固醇"],
+[69,"hypertension","高血壓"],
+[70,"diabetes","糖尿病"],
+[71,"asthma","哮喘"],
+[72,"pneumonia","肺炎"],
+[73,"bronchitis","支氣管炎"],
+[74,"allergic reaction","過敏反應"],
+[75,"infection","感染"],
+[76,"virus","病毒"],
+[77,"bacteria","細菌"],
+[78,"fever","發燒"],
+[79,"cough","咳嗽"],
+[80,"headache","頭痛"],
+[81,"nausea","噁心"],
+[82,"vomiting","嘔吐"],
+[83,"diarrhea","腹瀉"],
+[84,"constipation","便秘"],
+[85,"rash","皮疹"],
+[86,"fracture","骨折"],
+[87,"sprain","扭傷"],
+[88,"burn","燒傷"],
+[89,"cut","割傷"],
+[90,"bruise","瘀傷"],
+[91,"dizziness","頭暈"],
+[92,"fainting","昏厥"],
+[93,"swelling","腫脹"],
+[94,"inflammation","發炎"],
+[95,"chronic pain","慢性疼痛"],
+[96,"acute pain","急性疼痛"],
+[97,"fatigue","疲勞"],
+[98,"insomnia","失眠"],
+[99,"stress","壓力"],
+[100,"anxiety","焦慮"]
+]
+
+// 內置的詞彙列表-------------------------------------------------------------------------------------
+
 
 
 
@@ -989,25 +1331,22 @@ let processingAnimation = false;
 // 在頁面加載完成後初始化下拉選單並開始遊戲
 document.addEventListener('DOMContentLoaded', function() {
     initializeVocabularySelect();
+    initializeVocabularyListSelect(); // 確保這行在這裡
     initializeRangeSlider();
-    // 移除這行，因為我們不想在開始時就加載詞彙表
-    // processJsonData(fallbackVocabulary);
+    // 其他初始化代碼...
 });
 
 // 初始化詞彙表選擇下拉選單
 function initializeVocabularySelect() {
     const select = document.getElementById('vocabularySelect');
     
-    // 添加 "None" 選項
-    const noneOption = document.createElement('option');
-    noneOption.value = "none";
-    noneOption.textContent = "None";
-    select.appendChild(noneOption);
+    // 清空現有的選項
+    select.innerHTML = '<option value="none">None</option>';
 
     for (const key in vocabularies) {
         const option = document.createElement('option');
         option.value = key;
-        option.textContent = key;
+        option.textContent = key.replace('fallbackVocabulary_', '');
         select.appendChild(option);
     }
 
@@ -1016,7 +1355,6 @@ function initializeVocabularySelect() {
 
     select.addEventListener('change', function() {
         if (this.value === "none") {
-            // 如果選擇了 "None"，可以在這裡添加相應的處理邏輯
             console.log("No vocabulary selected");
             return;
         }
@@ -1099,15 +1437,35 @@ function initializeGame() {
 
 function createCard(content, id, column) {
     const card = document.createElement('div');
-    card.classList.add('card', column); // Assign left or right based on the column
-    card.innerText = content;
+    card.classList.add('card', column);
+    
+    if (column === 'left') {
+        const imageButton = document.createElement('button');
+        imageButton.classList.add('image-button');
+        imageButton.innerHTML = '🖼️';
+        imageButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const modal = document.getElementById('imageModal');
+            if (modal.style.display === 'block' && modal.dataset.currentWord === content) {
+                modal.style.display = 'none';
+            } else {
+                showImage(content);
+                modal.dataset.currentWord = content;
+            }
+        });
+        card.appendChild(imageButton);
+    }
+    
+    const textSpan = document.createElement('span');
+    textSpan.innerText = content;
+    card.appendChild(textSpan);
+    
     card.dataset.pair = id;
 
-    // Play pronunciation immediately if it's an English word
     if (/^[a-zA-Z\s]+$/.test(content)) {
         card.addEventListener('click', () => {
-            speakText(content);  // Instant speech synthesis for English words
-            handleCardClick(card);  // Proceed to handle the game logic
+            speakText(content);
+            handleCardClick(card);
         });
     } else {
         card.addEventListener('click', () => handleCardClick(card));
@@ -1116,12 +1474,26 @@ function createCard(content, id, column) {
     return card;
 }
 
+// 修改 speakText 函數
 function speakText(text) {
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'en-US'; // Set the language to English (US)
-    speechSynthesis.speak(utterance);
-}
+    const ttsSelect = document.getElementById('ttsSelect');
+    const selectedTTS = ttsSelect.value;
 
+    if (selectedTTS === 'browser') {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US';
+        speechSynthesis.speak(utterance);
+    } else if (selectedTTS === 'google') {
+        const audio = new Audio(`https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=en&client=tw-ob`);
+        audio.play().catch(error => {
+            console.error('Error playing Google TTS:', error);
+            // 如果 Google TTS 失敗，回退到瀏覽器 TTS
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            speechSynthesis.speak(utterance);
+        });
+    }
+}
 
 function handleCardClick(clickedCard) {
     if (processingAnimation) return; // Prevent interaction during animation setup but allow during animation
@@ -1287,6 +1659,170 @@ function applyVocabularyRange(start, end) {
     const rangedVocabulary = originalVocabulary.slice(start - 1, end);
     processJsonData(rangedVocabulary);
     showMessage(`已應用單詞範圍: ${start} - ${end}`);
+}
+
+// 在文件頂部添加 Pixabay API 密鑰
+const PIXABAY_API_KEY = '46481672-c86f0353c7aa5be69bdef1d93';
+
+// 添加顯示圖片的函數
+let currentImages = [];
+let currentImageIndex = 0;
+
+// 添加獲取例句的函數
+async function getExampleSentence(word) {
+    try {
+        const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+        const data = await response.json();
+        
+        if (data && data[0] && data[0].meanings && data[0].meanings[0] && data[0].meanings[0].definitions) {
+            const definition = data[0].meanings[0].definitions.find(def => def.example);
+            return definition ? definition.example : '沒有找到例句。';
+        }
+        return '沒有找到例句。';
+    } catch (error) {
+        console.error('Error fetching example sentence:', error);
+        return '獲取例句時出錯。';
+    }
+}
+
+// 修改 showImage 函數
+async function showImage(word) {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const loadingSpinner = document.getElementById('loadingSpinner');
+    const wordDisplay = document.getElementById('wordDisplay');
+    const exampleSentenceDisplay = document.getElementById('exampleSentenceDisplay');
+    
+    modal.style.display = 'block';
+    modalImage.style.display = 'none';
+    loadingSpinner.style.display = 'block';
+    
+    // 查找對應的中文翻譯
+    const wordPair = wordPairs.find(pair => pair.english === word);
+    const chineseTranslation = wordPair ? wordPair.chinese : '無翻譯';
+    
+    // 更新單詞顯示
+    wordDisplay.innerHTML = `<strong>${word}</strong> - ${chineseTranslation}`;
+
+    // 獲取並顯示例句
+    const exampleSentence = await getExampleSentence(word);
+    exampleSentenceDisplay.textContent = `例句：${exampleSentence}`;
+
+    try {
+        const response = await fetch(`https://pixabay.com/api/?key=${PIXABAY_API_KEY}&q=${encodeURIComponent(word)}&image_type=photo&per_page=10`);
+        const data = await response.json();
+        currentImages = data.hits.map(hit => hit.webformatURL);
+        currentImageIndex = 0;
+
+        if (currentImages.length > 0) {
+            displayNextImage();
+        } else {
+            modalImage.src = 'path/to/no-image-found.jpg';
+            modalImage.style.display = 'block';
+        }
+    } catch (error) {
+        console.error('Error fetching images:', error);
+        modalImage.src = 'path/to/error-image.jpg';
+        modalImage.style.display = 'block';
+    }
+
+    loadingSpinner.style.display = 'none';
+}
+function displayNextImage() {
+    const modalImage = document.getElementById('modalImage');
+    modalImage.src = currentImages[currentImageIndex];
+    modalImage.style.display = 'block';
+    currentImageIndex = (currentImageIndex + 1) % currentImages.length;
+}
+
+// 在文件底部添加以下代碼
+document.addEventListener('DOMContentLoaded', function() {
+    // ... 現有的代碼 ...
+
+    const modal = document.createElement('div');
+    modal.id = 'imageModal';
+    modal.classList.add('modal');
+    modal.innerHTML = `
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="wordDisplay"></div>
+            <div id="exampleSentenceDisplay"></div>
+            <img id="modalImage" src="" alt="Word Image">
+            <div id="loadingSpinner">Loading...</div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    const closeBtn = modal.querySelector('.close');
+    closeBtn.onclick = function() {
+        modal.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+
+    const modalImage = document.getElementById('modalImage');
+    modalImage.addEventListener('click', displayNextImage);
+
+    // 添加這個事件監聽器來處理點擊其他單詞時關閉圖片模態框
+    document.getElementById('game-container').addEventListener('click', function(e) {
+        if (e.target.classList.contains('card') || e.target.closest('.card')) {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+        }
+    });
+
+    // 初始化TTS選擇下拉選單
+    const ttsSelect = document.getElementById('ttsSelect');
+    ttsSelect.addEventListener('change', function() {
+        console.log('Selected TTS:', this.value);
+    });
+});
+
+// 初始化展開單字列表下拉選單
+function initializeVocabularyListSelect() {
+    const select = document.getElementById('vocabularyListSelect');
+    
+    // 清空現有的選項
+    select.innerHTML = '<option value="">請選擇單字列表</option>';
+    
+    for (const key in vocabularies) {
+        const option = document.createElement('option');
+        option.value = key;
+        option.textContent = key.replace('fallbackVocabulary_', '');
+        select.appendChild(option);
+    }
+
+    select.addEventListener('change', function() {
+        displayVocabularyList(this.value);
+    });
+}
+
+function displayVocabularyList(vocabularyKey) {
+    const display = document.getElementById('vocabularyListDisplay');
+    const title = document.getElementById('vocabularyListTitle');
+    const list = document.getElementById('vocabularyList');
+    
+    if (!vocabularyKey) {
+        display.style.display = 'none';
+        return;
+    }
+
+    const vocabulary = vocabularies[vocabularyKey];
+    
+    title.textContent = vocabularyKey.replace('fallbackVocabulary_', '');
+    list.innerHTML = '';
+    
+    vocabulary.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item[1]} - ${item[2]}`;
+        list.appendChild(li);
+    });
+
+    display.style.display = 'block';
 }
 
 

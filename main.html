@@ -9,9 +9,31 @@
 </head>
 <body>
     <h1>Match the Words</h1>
+    
+    <!-- 添加新的下拉選單 -->
+    <div>
+        <label for="vocabularyListSelect">展開單字列表：</label>
+        <select id="vocabularyListSelect">
+            <option value="">請選擇單字列表</option>
+        </select>
+    </div>
+    
+    <!-- 添加顯示單字列表的區域 -->
+    <div id="vocabularyListDisplay" style="display: none;">
+        <h3 id="vocabularyListTitle"></h3>
+        <ul id="vocabularyList"></ul>
+    </div>
+
     <div>
         <label for="vocabularySelect">選擇詞彙表：</label>
         <select id="vocabularySelect"></select>
+    </div>
+    <div>
+        <label for="ttsSelect">選擇發音 API：</label>
+        <select id="ttsSelect">
+          <option value="browser">瀏覽器 TTS</option>
+          <option value="google">Google TTS</option>
+        </select>
     </div>
     <div class="settings">
         <label for="fadeDuration">Fade Duration (seconds): </label>
