@@ -31,18 +31,24 @@
             align-items: center;
             justify-content: center;
             box-sizing: border-box;
+            position: relative; /* 添加这行 */
         }
         .title-container {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px; /* 减小底部边距 */
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            white-space: nowrap;
         }
         h1 {
-            font-size: 24px; /* 减小字体大小 */
-            font-weight: 600;
-            margin: 10px 0; /* 减小上下边距 */
+            font-size: 12px; /* 减小字体大小 */
+            font-weight: 400; /* 减小字体粗细 */
+            color: var(--secondary-text-color); /* 使用次要文本颜色 */
+            margin: 0;
             padding: 0;
+            letter-spacing: 2px; /* 增加字母间距 */
         }
         .time-picker-container {
             margin-bottom: 15px;
@@ -146,19 +152,109 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            height: 120px; /* 与时间选择器高度一致 */
+            min-height: 120px; /* 改最小高度 */
+            height: auto; /* 允许自动增加高度 */
         }
         #result p {
-            margin: 5px 0;
-            font-size: 14px;
-            color: var(--secondary-text-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            margin: 8px 0; /* 增加行间距 */
         }
         #result span {
             color: var(--text-color);
             font-weight: 500;
+        }
+        .slider-container {
+            margin-bottom: 15px;
+            background-color: #000000;
+            padding: 10px;
+            width: calc(100% - 20px);
+            max-width: 300px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-sizing: border-box;
+        }
+        .slider-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .slider-title {
+            font-size: 14px;
+            color: var(--secondary-text-color);
+            margin-right: 10px; /* 添加右边距 */
+        }
+        .slider-value {
+            font-size: 18px; /* 稍微增大字体 */
+            color: var(--text-color);
+            font-weight: 500;
+            white-space: nowrap; /* 防止换行 */
+        }
+        .slider-value span {
+            margin-right: 2px;
+        }
+        .slider {
+            width: 100%;
+            margin-top: 5px;
+            -webkit-appearance: none;
+            height: 4px;
+            background: #4c4c4c;
+            outline: none;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+            border-radius: 2px;
+        }
+        .slider:hover {
+            opacity: 1;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        .settings-container {
+            margin-bottom: 15px;
+            width: calc(100% - 20px);
+            max-width: 300px;
+        }
+        .settings-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            cursor: pointer;
+        }
+        .settings-title {
+            font-size: 16px;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+        .settings-arrow {
+            font-size: 12px;
+            color: var(--text-color);
+            transition: transform 0.3s ease;
+        }
+        .settings-content {
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.3s ease-out;
+        }
+        .settings-content.show {
+            max-height: 300px; /* 调整此值以适应内容 */
+            transition: max-height 0.5s ease-in;
+        }
+        .settings-arrow.rotated {
+            transform: rotate(180deg);
         }
     </style>
 </head>
@@ -205,9 +301,34 @@
         </div>
 
         <div id="result">
-            <p>工作时长：<span id="work-duration"></span></p>
-            <p>离家时间：<span id="leave-home-time"></span></p>
+            <p>出门时间：<span id="leave-home-time"></span></p>
             <p>起床时间：<span id="wake-up-time"></span></p>
+            <p>工作时长：<span id="work-duration"></span></p>
+        </div>
+
+        <!-- 在 #result div 之后添加以下内容 -->
+        <div class="settings-container">
+            <div class="settings-header" id="settings-toggle">
+                <span class="settings-title">Setting</span>
+                <span class="settings-arrow">▼</span>
+            </div>
+            <div class="settings-content" id="settings-content">
+                <div class="slider-container">
+                    <div class="slider-header">
+                        <div class="slider-title">提前多久出门</div>
+                        <div class="slider-value"><span id="leave-home-value">30</span>分钟</div>
+                    </div>
+                    <input type="range" id="leave-home-slider" min="0" max="120" value="30" step="5" class="slider">
+                </div>
+
+                <div class="slider-container">
+                    <div class="slider-header">
+                        <div class="slider-title">提前多久起床</div>
+                        <div class="slider-value"><span id="wake-up-value">110</span>分钟</div>
+                    </div>
+                    <input type="range" id="wake-up-slider" min="0" max="180" value="110" step="5" class="slider">
+                </div>
+            </div>
         </div>
     </div>
 
@@ -225,7 +346,7 @@
         function setupPicker(column, min, max, step, initialValue) {
             let startY, currentTranslate = 0;
             const items = column.querySelector('.picker-items');
-            const itemHeight = 35; // 更新项目高度
+            const itemHeight = 35; // 更新项目高
             const totalItems = Math.floor((max - min) / step) + 1;
             const totalHeight = (totalItems - 1) * itemHeight;
             const pickerHighlight = column.querySelector('.picker-highlight');
@@ -295,27 +416,51 @@
             let duration = ((endHour * 60 + endMinute) - (startHour * 60 + startMinute) + 1440) % 1440;
             const workDuration = `${Math.floor(duration / 60)}小时${duration % 60}分钟`;
             
-            // 计算离家时间
+            // 使用滑块值计算离家时间和起床时间
+            const leaveHomeMinutes = parseInt(document.getElementById('leave-home-slider').value);
+            const wakeUpMinutes = parseInt(document.getElementById('wake-up-slider').value);
+
             let leaveHomeTime = new Date(2023, 0, 1, startHour, startMinute);
-            leaveHomeTime.setMinutes(leaveHomeTime.getMinutes() - 30);
+            leaveHomeTime.setMinutes(leaveHomeTime.getMinutes() - leaveHomeMinutes);
             const leaveHomeTimeString = leaveHomeTime.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' });
-            
-            // 计算起床时间
+
             let wakeUpTime = new Date(2023, 0, 1, startHour, startMinute);
-            wakeUpTime.setMinutes(wakeUpTime.getMinutes() - 110);
+            wakeUpTime.setMinutes(wakeUpTime.getMinutes() - wakeUpMinutes);
             const wakeUpTimeString = wakeUpTime.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' });
             
             // 更新显示
             document.getElementById('work-duration').textContent = workDuration;
             document.getElementById('leave-home-time').textContent = leaveHomeTimeString;
             document.getElementById('wake-up-time').textContent = wakeUpTimeString;
+            document.getElementById('leave-home-value').textContent = leaveHomeMinutes;
+            document.getElementById('wake-up-value').textContent = wakeUpMinutes;
         }
 
-        setupPicker(document.getElementById('start-hour-column'), 0, 23, 1, 9);
-        setupPicker(document.getElementById('start-minute-column'), 0, 55, 5, 0);
-        setupPicker(document.getElementById('end-hour-column'), 0, 23, 1, 18);
-        setupPicker(document.getElementById('end-minute-column'), 0, 55, 5, 0);
-        updateResults();
+        // 在文档加载完成后执行初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            setupPicker(document.getElementById('start-hour-column'), 0, 23, 1, 9);
+            setupPicker(document.getElementById('start-minute-column'), 0, 55, 5, 0);
+            setupPicker(document.getElementById('end-hour-column'), 0, 23, 1, 18);
+            setupPicker(document.getElementById('end-minute-column'), 0, 55, 5, 0);
+
+            const leaveHomeSlider = document.getElementById('leave-home-slider');
+            const wakeUpSlider = document.getElementById('wake-up-slider');
+
+            leaveHomeSlider.oninput = updateResults;
+            wakeUpSlider.oninput = updateResults;
+
+            // 初始更新结果
+            updateResults();
+
+            const settingsToggle = document.getElementById('settings-toggle');
+            const settingsContent = document.getElementById('settings-content');
+            const settingsArrow = settingsToggle.querySelector('.settings-arrow');
+
+            settingsToggle.addEventListener('click', function() {
+                settingsContent.classList.toggle('show');
+                settingsArrow.classList.toggle('rotated');
+            });
+        });
 
         // 禁用整个文档的默认触摸行为
         document.addEventListener('touchmove', function(e) {
