@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>工时计算工具</title>
+    <style>
+        :root {
+            --primary-color: #007AFF;
+            --background-color: #000000;
+            --text-color: #FFFFFF;
+            --secondary-text-color: #8E8E93;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 100%;
+            margin: 0;
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+        }
+        .title-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin: 0;
+            padding: 0;
+        }
+        .time-picker-container {
+            margin-bottom: 20px;
+            background-color: #000000; /* 改为黑色 */
+            padding: 20px;
+            width: calc(100% - 40px);
+            max-width: 600px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1); /* 添加细边框以区分背景 */
+        }
+        .time-picker-title {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: var(--secondary-text-color);
+            font-weight: 500;
+            padding: 0 20px;
+        }
+        .time-picker {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        .picker-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80px;
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        .picker-items {
+            position: absolute;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .picker-item {
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 20px; /* 减小未选中项的字体大小 */
+            color: rgba(142, 142, 147, 0.6); /* 使未选中项的颜色更暗 */
+            transition: all 0.3s ease; /* 添加过渡效果 */
+        }
+        .picker-item.selected {
+            font-size: 40px; /* 增大选中项的字体大小 */
+            color: var(--text-color); /* 保持选中项的颜色不变 */
+        }
+        .time-separator {
+            font-size: 36px;
+            font-weight: 300;
+            margin: 0 5px;
+        }
+        .picker-mask {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 80px;
+            pointer-events: none;
+        }
+        .picker-mask.top {
+            top: 0;
+            background: linear-gradient(to bottom, var(--background-color) 50%, rgba(0,0,0,0));
+        }
+        .picker-mask.bottom {
+            bottom: 0;
+            background: linear-gradient(to top, var(--background-color) 50%, rgba(0,0,0,0));
+        }
+        /* 删除或注释掉这个部分
+        .picker-highlight {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            height: 40px;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.1);
+            pointer-events: none;
+        }
+        */
+        #result {
+            margin-top: 20px;
+            text-align: center;
+            background-color: #000000; /* 改为黑色 */
+            padding: 20px;
+            width: calc(100% - 40px);
+            max-width: 600px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1); /* 添加细边框以区分背景 */
+        }
+        #result p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: var(--secondary-text-color);
+        }
+        #result span {
+            color: var(--text-color);
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title-container">
+            <h1>工时计算工具</h1>
+        </div>
+        
+        <div class="time-picker-container">
+            <div class="time-picker-title">上班时间</div>
+            <div class="time-picker" id="start-time-picker">
+                <div class="picker-column" id="start-hour-column">
+                    <div class="picker-items"></div>
+                    <div class="picker-mask top"></div>
+                    <div class="picker-mask bottom"></div>
+                </div>
+                <div class="time-separator">:</div>
+                <div class="picker-column" id="start-minute-column">
+                    <div class="picker-items"></div>
+                    <div class="picker-mask top"></div>
+                    <div class="picker-mask bottom"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-picker-container">
+            <div class="time-picker-title">下班时间</div>
+            <div class="time-picker" id="end-time-picker">
+                <div class="picker-column" id="end-hour-column">
+                    <div class="picker-items"></div>
+                    <div class="picker-mask top"></div>
+                    <div class="picker-mask bottom"></div>
+                    <div class="picker-highlight"></div>
+                </div>
+                <div class="time-separator">:</div>
+                <div class="picker-column" id="end-minute-column">
+                    <div class="picker-items"></div>
+                    <div class="picker-mask top"></div>
+                    <div class="picker-mask bottom"></div>
+                    <div class="picker-highlight"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="result">
+            <p>工作时长：<span id="work-duration"></span></p>
+            <p>离家时间：<span id="leave-home-time"></span></p>
+            <p>起床时间：<span id="wake-up-time"></span></p>
+        </div>
+    </div>
+
+    <script>
+        function createPickerItems(column, start, end, step = 1) {
+            const items = column.querySelector('.picker-items');
+            for (let i = start; i <= end; i += step) {
+                const item = document.createElement('div');
+                item.className = 'picker-item';
+                item.textContent = i.toString().padStart(2, '0');
+                items.appendChild(item);
+            }
+        }
+
+        function setupPicker(column, min, max, step, initialValue) {
+            let startY, currentTranslate = 0;
+            const items = column.querySelector('.picker-items');
+            const itemHeight = 40;
+            const totalItems = Math.floor((max - min) / step) + 1;
+            const totalHeight = (totalItems - 1) * itemHeight;
+            const pickerHighlight = column.querySelector('.picker-highlight');
+
+            createPickerItems(column, min, max, step);
+
+            function updatePosition(y) {
+                currentTranslate = Math.max(Math.min(y, 0), -totalHeight);
+                items.style.transform = `translateY(${currentTranslate}px)`;
+            }
+
+            function snap() {
+                const index = Math.round(-currentTranslate / itemHeight);
+                currentTranslate = -index * itemHeight;
+                items.style.transition = 'transform 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
+                items.style.transform = `translateY(${currentTranslate}px)`;
+                setTimeout(() => {
+                    items.style.transition = 'none';
+                }, 300);
+                updateSelectedItem();
+                updateResults();
+            }
+
+            function updateSelectedItem() {
+                const selectedIndex = Math.round(-currentTranslate / itemHeight);
+                const pickerItems = column.querySelectorAll('.picker-item');
+                pickerItems.forEach((item, index) => {
+                    item.classList.toggle('selected', index === selectedIndex);
+                });
+            }
+
+            column.addEventListener('touchstart', (e) => {
+                startY = e.touches[0].clientY - currentTranslate;
+                items.style.transition = 'none';
+            });
+
+            column.addEventListener('touchmove', (e) => {
+                const y = e.touches[0].clientY - startY;
+                updatePosition(y);
+            });
+
+            column.addEventListener('touchend', snap);
+
+            column.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                updatePosition(currentTranslate + e.deltaY);
+                snap();
+            });
+
+            // 设置初始值
+            currentTranslate = -(initialValue - min) / step * itemHeight;
+            items.style.transform = `translateY(${currentTranslate}px)`;
+            updateSelectedItem();
+        }
+
+        function updateResults() {
+            const startHour = parseInt(document.querySelector('#start-hour-column .picker-item.selected').textContent);
+            const startMinute = parseInt(document.querySelector('#start-minute-column .picker-item.selected').textContent);
+            const endHour = parseInt(document.querySelector('#end-hour-column .picker-item.selected').textContent);
+            const endMinute = parseInt(document.querySelector('#end-minute-column .picker-item.selected').textContent);
+            
+            // 计算工作时长
+            let duration = ((endHour * 60 + endMinute) - (startHour * 60 + startMinute) + 1440) % 1440;
+            const workDuration = `${Math.floor(duration / 60)}小时${duration % 60}分钟`;
+            
+            // 计算离家时间
+            let leaveHomeTime = new Date(2023, 0, 1, startHour, startMinute);
+            leaveHomeTime.setMinutes(leaveHomeTime.getMinutes() - 30);
+            const leaveHomeTimeString = leaveHomeTime.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' });
+            
+            // 计算起床时间
+            let wakeUpTime = new Date(2023, 0, 1, startHour, startMinute);
+            wakeUpTime.setMinutes(wakeUpTime.getMinutes() - 110);
+            const wakeUpTimeString = wakeUpTime.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' });
+            
+            // 更新显示
+            document.getElementById('work-duration').textContent = workDuration;
+            document.getElementById('leave-home-time').textContent = leaveHomeTimeString;
+            document.getElementById('wake-up-time').textContent = wakeUpTimeString;
+        }
+
+        setupPicker(document.getElementById('start-hour-column'), 0, 23, 1, 9);
+        setupPicker(document.getElementById('start-minute-column'), 0, 55, 5, 0);
+        setupPicker(document.getElementById('end-hour-column'), 0, 23, 1, 18);
+        setupPicker(document.getElementById('end-minute-column'), 0, 55, 5, 0);
+        updateResults();
+    </script>
+</body>
+</html>
