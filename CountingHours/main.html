@@ -25,10 +25,11 @@
             max-width: 100%;
             margin: 0;
             padding: 20px;
-            flex-grow: 1;
+            height: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             box-sizing: border-box;
         }
         .title-container {
@@ -256,16 +257,20 @@
                 });
             }
 
-            column.addEventListener('touchstart', (e) => {
+            function handleTouchStart(e) {
+                e.preventDefault(); // 阻止默认行为
                 startY = e.touches[0].clientY - currentTranslate;
                 items.style.transition = 'none';
-            });
+            }
 
-            column.addEventListener('touchmove', (e) => {
+            function handleTouchMove(e) {
+                e.preventDefault(); // 阻止默认行为
                 const y = e.touches[0].clientY - startY;
                 updatePosition(y);
-            });
+            }
 
+            column.addEventListener('touchstart', handleTouchStart, { passive: false });
+            column.addEventListener('touchmove', handleTouchMove, { passive: false });
             column.addEventListener('touchend', snap);
 
             column.addEventListener('wheel', (e) => {
@@ -311,6 +316,11 @@
         setupPicker(document.getElementById('end-hour-column'), 0, 23, 1, 18);
         setupPicker(document.getElementById('end-minute-column'), 0, 55, 5, 0);
         updateResults();
+
+        // 禁用整个文档的默认触摸行为
+        document.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+        }, { passive: false });
     </script>
 </body>
 </html>
