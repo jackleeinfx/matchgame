@@ -500,14 +500,15 @@
         }
 
         function disableScroll() {
-            document.body.addEventListener('touchmove', preventDefault, { passive: false });
+            document.addEventListener('touchmove', preventDefault, { passive: false });
+            document.addEventListener('wheel', preventDefault, { passive: false });
         }
 
         function enableScroll() {
-            document.body.removeEventListener('touchmove', preventDefault);
+            document.removeEventListener('touchmove', preventDefault);
+            document.removeEventListener('wheel', preventDefault);
         }
 
-        // 修改 allowScrollOnElement 函数
         function allowScrollOnElement(element) {
             let startY;
 
@@ -516,24 +517,11 @@
             }, { passive: true });
 
             element.addEventListener('touchmove', function(e) {
-                const currentY = e.touches[0].clientY;
-                const isScrollable = element.scrollHeight > element.clientHeight;
-                const isScrollingUp = currentY > startY;
-                const isScrollingDown = currentY < startY;
-                const isAtTop = element.scrollTop === 0;
-                const isAtBottom = element.scrollHeight - element.scrollTop === element.clientHeight;
+                e.stopPropagation();
+            }, { passive: false });
 
-                if (
-                    (isScrollable && !isAtTop && !isAtBottom) ||
-                    (isScrollable && isAtTop && isScrollingDown) ||
-                    (isScrollable && isAtBottom && isScrollingUp)
-                ) {
-                    e.stopPropagation();
-                } else {
-                    preventDefault(e);
-                }
-
-                startY = currentY;
+            element.addEventListener('wheel', function(e) {
+                e.stopPropagation();
             }, { passive: false });
         }
 
@@ -541,7 +529,8 @@
             const scrollableElements = [
                 ...document.querySelectorAll('.time-picker'),
                 document.getElementById('leave-home-slider'),
-                document.getElementById('wake-up-slider')
+                document.getElementById('wake-up-slider'),
+                document.getElementById('settings-content')
             ];
 
             scrollableElements.forEach(allowScrollOnElement);
@@ -549,6 +538,13 @@
             // 初始禁用滚动
             disableScroll();
         });
+
+        // 防止 iOS 橡皮筋效果
+        document.body.addEventListener('touchmove', function(e) {
+            if (e.target.closest('.time-picker, #leave-home-slider, #wake-up-slider, #settings-content') === null) {
+                e.preventDefault();
+            }
+        }, { passive: false });
 
         // 在 setupPicker 函数外添加这个新函数
         function debounce(func, wait) {
