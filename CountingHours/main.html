@@ -104,7 +104,7 @@
             transition: all 0.3s ease; /* 添加过渡效果 */
         }
         .picker-item.selected {
-            font-size: 32px; /* ��选中项的字体大小 */
+            font-size: 32px; /* 选中项的字体大小 */
             color: var(--text-color); /* 保持选中项的颜色不变 */
         }
         .time-separator {
@@ -495,18 +495,31 @@
         });
 
         // 阻止整个文档的默认触摸行为
-        document.addEventListener('touchmove', function(e) {
+        function preventDefault(e) {
             e.preventDefault();
-        }, { passive: false });
-
-        // 允许特定元素滚动
-        function allowTouchMove(element) {
-            element.addEventListener('touchmove', function(e) {
-                e.stopPropagation();
-            }, { passive: true });
         }
 
-        // 为需要滚动的元素添加允许滚动的监听器
+        function disableScroll() {
+            document.body.addEventListener('touchmove', preventDefault, { passive: false });
+        }
+
+        function enableScroll() {
+            document.body.removeEventListener('touchmove', preventDefault);
+        }
+
+        // 允许特定元素滚动
+        function allowScrollOnElement(element) {
+            element.addEventListener('touchstart', function() {
+                enableScroll();
+            });
+            element.addEventListener('touchend', function() {
+                disableScroll();
+            });
+            element.addEventListener('touchmove', function(e) {
+                e.stopPropagation();
+            }, { passive: false });
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             const scrollableElements = [
                 ...document.querySelectorAll('.time-picker'),
@@ -514,7 +527,10 @@
                 document.getElementById('wake-up-slider')
             ];
 
-            scrollableElements.forEach(allowTouchMove);
+            scrollableElements.forEach(allowScrollOnElement);
+
+            // 初始禁用滚动
+            disableScroll();
         });
 
         // 在 setupPicker 函数外添加这个新函数
