@@ -104,7 +104,7 @@
             transition: all 0.3s ease; /* 添加过渡效果 */
         }
         .picker-item.selected {
-            font-size: 32px; /* ��小选中项的字体大小 */
+            font-size: 32px; /* ��选中项的字体大小 */
             color: var(--text-color); /* 保持选中项的颜色不变 */
         }
         .time-separator {
@@ -494,16 +494,27 @@
             });
         });
 
-        // 移除整个文档的默认触摸行为阻止
-        // document.addEventListener('touchmove', function(e) {
-        //     e.preventDefault();
-        // }, { passive: false });
+        // 阻止整个文档的默认触摸行为
+        document.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+        }, { passive: false });
 
-        // 只为特定元素阻止默认触摸行为
-        document.querySelectorAll('.time-picker').forEach(picker => {
-            picker.addEventListener('touchmove', function(e) {
-                e.preventDefault();
-            }, { passive: false });
+        // 允许特定元素滚动
+        function allowTouchMove(element) {
+            element.addEventListener('touchmove', function(e) {
+                e.stopPropagation();
+            }, { passive: true });
+        }
+
+        // 为需要滚动的元素添加允许滚动的监听器
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollableElements = [
+                ...document.querySelectorAll('.time-picker'),
+                document.getElementById('leave-home-slider'),
+                document.getElementById('wake-up-slider')
+            ];
+
+            scrollableElements.forEach(allowTouchMove);
         });
 
         // 在 setupPicker 函数外添加这个新函数
