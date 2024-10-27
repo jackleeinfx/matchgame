@@ -104,7 +104,7 @@
             transition: all 0.3s ease; /* 添加过渡效果 */
         }
         .picker-item.selected {
-            font-size: 32px; /* 减小选中项的字体大小 */
+            font-size: 32px; /* ��小选中项的字体大小 */
             color: var(--text-color); /* 保持选中项的颜色不变 */
         }
         .time-separator {
@@ -346,10 +346,9 @@
         function setupPicker(column, min, max, step, initialValue) {
             let startY, currentTranslate = 0;
             const items = column.querySelector('.picker-items');
-            const itemHeight = 35; // 更新项目高
+            const itemHeight = 35; // 更新项目高度
             const totalItems = Math.floor((max - min) / step) + 1;
             const totalHeight = (totalItems - 1) * itemHeight;
-            const pickerHighlight = column.querySelector('.picker-highlight');
 
             createPickerItems(column, min, max, step);
 
@@ -367,7 +366,7 @@
                     items.style.transition = 'none';
                 }, 300);
                 updateSelectedItem();
-                updateResults();
+                debouncedUpdateResults();
             }
 
             function updateSelectedItem() {
@@ -379,28 +378,28 @@
             }
 
             function handleTouchStart(e) {
-                e.preventDefault(); // 阻止默认行为
                 startY = e.touches[0].clientY - currentTranslate;
                 items.style.transition = 'none';
             }
 
             function handleTouchMove(e) {
-                e.preventDefault(); // 阻止默认行为
                 const y = e.touches[0].clientY - startY;
                 updatePosition(y);
             }
 
-            column.addEventListener('touchstart', handleTouchStart, { passive: false });
-            column.addEventListener('touchmove', handleTouchMove, { passive: false });
-            column.addEventListener('touchend', snap);
-
-            column.addEventListener('wheel', (e) => {
+            function handleWheel(e) {
                 e.preventDefault();
-                updatePosition(currentTranslate + e.deltaY);
-                snap();
-            });
+                const delta = e.deltaY > 0 ? -itemHeight : itemHeight;
+                updatePosition(currentTranslate + delta);
+                requestAnimationFrame(snap);
+            }
 
-            // 设置始值
+            column.addEventListener('touchstart', handleTouchStart, { passive: true });
+            column.addEventListener('touchmove', handleTouchMove, { passive: true });
+            column.addEventListener('touchend', snap);
+            column.addEventListener('wheel', handleWheel, { passive: false });
+
+            // 设置初始值
             currentTranslate = -(initialValue - min) / step * itemHeight;
             items.style.transform = `translateY(${currentTranslate}px)`;
             updateSelectedItem();
@@ -446,8 +445,41 @@
             const leaveHomeSlider = document.getElementById('leave-home-slider');
             const wakeUpSlider = document.getElementById('wake-up-slider');
 
-            leaveHomeSlider.oninput = updateResults;
-            wakeUpSlider.oninput = updateResults;
+            function handleSliderInput(event) {
+                const value = event.target.value;
+                event.target.parentNode.querySelector('.slider-value span').textContent = value;
+                updateResults();
+            }
+
+            function handleSliderChange(event) {
+                handleSliderInput(event);
+            }
+
+            leaveHomeSlider.addEventListener('input', handleSliderInput);
+            wakeUpSlider.addEventListener('input', handleSliderInput);
+            
+            // 添加 change 事件监听器
+            leaveHomeSlider.addEventListener('change', handleSliderChange);
+            wakeUpSlider.addEventListener('change', handleSliderChange);
+
+            // 添加鼠标事件处理
+            function handleMouseDown(event) {
+                document.addEventListener('mousemove', handleMouseMove);
+                document.addEventListener('mouseup', handleMouseUp);
+            }
+
+            function handleMouseMove(event) {
+                event.target.value = event.target.value;
+                handleSliderInput({target: event.target});
+            }
+
+            function handleMouseUp() {
+                document.removeEventListener('mousemove', handleMouseMove);
+                document.removeEventListener('mouseup', handleMouseUp);
+            }
+
+            leaveHomeSlider.addEventListener('mousedown', handleMouseDown);
+            wakeUpSlider.addEventListener('mousedown', handleMouseDown);
 
             // 初始更新结果
             updateResults();
@@ -462,10 +494,33 @@
             });
         });
 
-        // 禁用整个文档的默认触摸行为
-        document.addEventListener('touchmove', function(e) {
-            e.preventDefault();
-        }, { passive: false });
+        // 移除整个文档的默认触摸行为阻止
+        // document.addEventListener('touchmove', function(e) {
+        //     e.preventDefault();
+        // }, { passive: false });
+
+        // 只为特定元素阻止默认触摸行为
+        document.querySelectorAll('.time-picker').forEach(picker => {
+            picker.addEventListener('touchmove', function(e) {
+                e.preventDefault();
+            }, { passive: false });
+        });
+
+        // 在 setupPicker 函数外添加这个新函数
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // 创建一个防抖版本的 updateResults
+        const debouncedUpdateResults = debounce(updateResults, 100);
     </script>
 </body>
 </html>
