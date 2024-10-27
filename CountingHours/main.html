@@ -29,21 +29,21 @@
             max-width: 100%;
             margin: 0;
             padding: 20px;
-            height: 100vh;
+            min-height: 100vh; /* 改为最小高度 */
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start; /* 改为从顶部开始 */
             box-sizing: border-box;
-            position: relative; /* 添加这行 */
-            overflow-y: auto; /* 允许容器内部滚动 */
-            -webkit-overflow-scrolling: touch; /* 为 iOS 设备提供平滑滚动 */
+            position: relative;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
         .title-container {
             position: absolute;
             right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
+            top: 20px; /* 改为固定的顶部距离 */
+            transform: none; /* 移除 Y 轴变换 */
             writing-mode: vertical-rl;
             text-orientation: upright;
             white-space: nowrap;
@@ -160,7 +160,7 @@
             flex-direction: column;
             justify-content: center;
             min-height: 120px; /* 改最小高度 */
-            height: auto; /* 允���自动增加高度 */
+            height: auto; /* 允自动增加高度 */
         }
         #result p {
             margin: 8px 0; /* 增加行间距 */
@@ -263,6 +263,10 @@
         }
         .settings-arrow.rotated {
             transform: rotate(180deg);
+        }
+        /* 添加一个顶部边距来平衡布局 */
+        .time-picker-container:first-of-type {
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -470,7 +474,7 @@
             leaveHomeSlider.addEventListener('change', handleSliderChange);
             wakeUpSlider.addEventListener('change', handleSliderChange);
 
-            // 添加鼠标事件处理
+            // 添加鼠标事��处理
             function handleMouseDown(event) {
                 document.addEventListener('mousemove', handleMouseMove);
                 document.addEventListener('mouseup', handleMouseUp);
