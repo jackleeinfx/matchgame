@@ -507,16 +507,33 @@
             document.body.removeEventListener('touchmove', preventDefault);
         }
 
-        // 允许特定元素滚动
+        // 修改 allowScrollOnElement 函数
         function allowScrollOnElement(element) {
-            element.addEventListener('touchstart', function() {
-                enableScroll();
-            });
-            element.addEventListener('touchend', function() {
-                disableScroll();
-            });
+            let startY;
+
+            element.addEventListener('touchstart', function(e) {
+                startY = e.touches[0].clientY;
+            }, { passive: true });
+
             element.addEventListener('touchmove', function(e) {
-                e.stopPropagation();
+                const currentY = e.touches[0].clientY;
+                const isScrollable = element.scrollHeight > element.clientHeight;
+                const isScrollingUp = currentY > startY;
+                const isScrollingDown = currentY < startY;
+                const isAtTop = element.scrollTop === 0;
+                const isAtBottom = element.scrollHeight - element.scrollTop === element.clientHeight;
+
+                if (
+                    (isScrollable && !isAtTop && !isAtBottom) ||
+                    (isScrollable && isAtTop && isScrollingDown) ||
+                    (isScrollable && isAtBottom && isScrollingUp)
+                ) {
+                    e.stopPropagation();
+                } else {
+                    preventDefault(e);
+                }
+
+                startY = currentY;
             }, { passive: false });
         }
 
