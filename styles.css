@@ -4,10 +4,17 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: #f4f4f9;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: fixed;
 }
 
 #fileInput {
-    margin: 20px;
+    margin: 5px;
 }
 
 #game-container {
@@ -15,7 +22,7 @@ body {
     grid-template-columns: repeat(2, 1fr); /* Two columns */
     grid-template-rows: repeat(6, auto); /* Now set to 5 rows */
     gap: 10px;
-    margin-top: 20px;
+    margin-top: 5px;
 }
 
 .card-container {
@@ -74,21 +81,38 @@ body {
 }
 
 #vocabularyRangeContainer {
-    margin: 20px 0;
+    margin: 5px 0;
     width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #vocabularyRange {
     height: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    width: 100%;
+    order: 2; /* 控制顯示順序 */
+}
+
+#vocabularyRangeContainer p {
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
 }
 
 #rangeValue {
     font-weight: bold;
+    margin: 0;
+    min-width: 60px;
+    order: 1;
+    display: inline;
 }
 
 #applyRange {
-    margin-top: 10px;
+    margin-top: 5px;
     padding: 5px 10px;
     background-color: #4CAF50;
     color: white;
@@ -174,4 +198,104 @@ body {
 
 #vocabularyListSelect {
     margin-bottom: 10px;
+}
+
+/* 修改 range-inputs 的样式 */
+.range-inputs {
+    margin: 10px 0;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.range-inputs input {
+    width: 60px;
+    padding: 5px;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.range-inputs input:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+/* 修改標題樣式 */
+h1 {
+    position: fixed;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+    color: #888;
+    margin: 0;
+    padding: 5px 2px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 2px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* 如果需要額外的樣式來調整文字間距 */
+#rangeValue span {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+/* noUiSlider 自定義樣式 */
+.noUi-target {
+    border: none;
+    box-shadow: none;
+    background: #e0e0e0;
+    height: 6px;
+}
+
+.noUi-handle {
+    border: 2px solid #4CAF50;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    border-radius: 50%;
+    width: 20px !important;
+    height: 20px !important;
+    right: -10px !important;
+    top: -8px !important;
+    cursor: pointer;
+}
+
+/* 移除 noUiSlider 預設的豎線 */
+.noUi-handle:before,
+.noUi-handle:after {
+    display: none;
+}
+
+/* 連接線的顏色 */
+.noUi-connect {
+    background: #4CAF50;
+}
+
+/* 滑塊懸停效果 */
+.noUi-handle:hover {
+    border-color: #45a049;
+}
+
+/* 滑塊激活狀態 */
+.noUi-active {
+    transform: scale(1.1);
+    transition: transform 0.2s;
+}
+
+/* 添加新的容器來處理內容的滾動 */
+.content-container {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* 為 iOS 提供平滑滾動 */
+    padding: 10px;
+    box-sizing: border-box;
 }
