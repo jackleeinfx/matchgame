@@ -451,3 +451,29 @@ input[type="file"]::-webkit-file-upload-button {
 input[type="file"]::-webkit-file-upload-button:hover {
     background-color: #404040;
 }
+
+/* 添加語音模式勾選框的樣式 */
+#voiceMode {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #2196F3;
+}
+
+/* 語音模式下的文字隱藏樣式 */
+.voice-mode-text {
+    font-family: monospace;
+    letter-spacing: 2px;
+}
+
+.control-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;  /* 控制檔案選擇和語音模式之間的間距 */
+}
+
+.voice-mode-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;  /* 控制"語音模式"文字和checkbox之間的間距 */
+}
