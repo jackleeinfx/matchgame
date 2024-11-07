@@ -353,9 +353,43 @@ select, input[type="file"], input[type="range"], input[type="number"] {
 /* 調整檔案輸入和按鈕容器 */
 .file-input-container {
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: 10px;
+    width: 100%;
+    max-width: 600px;
+}
+
+#fileInput {
+    max-width: 200px;
+    font-size: 0.9em;
+}
+
+input[type="file"] {
+    width: auto;
+    flex: 0 0 auto;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    padding: 3px 8px;
+    font-size: 0.9em;
+}
+
+#applyRange {
+    padding: 3px 8px;
+    font-size: 0.9em;
+    white-space: nowrap;
+}
+
+.voice-mode-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+.voice-mode-container label {
+    font-size: 0.9em;
+    min-width: auto;
 }
 
 /* 調整滑塊容器 */
