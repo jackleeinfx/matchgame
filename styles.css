@@ -3,8 +3,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #f4f4f9;
-    position: relative;
+    justify-content: center;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
     height: 100vh;
     width: 100vw;
     margin: 0;
@@ -19,10 +20,12 @@ body {
 
 #game-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two columns */
-    grid-template-rows: repeat(6, auto); /* Now set to 5 rows */
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, auto);
     gap: 10px;
-    margin-top: 5px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 600px;
 }
 
 .card-container {
@@ -43,17 +46,20 @@ body {
     justify-content: center;
     width: 30px;
     height: 30px;
+    color: #e0e0e0;
 }
 
 .card {
     flex-grow: 1;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #404040;
     border-radius: 5px;
     cursor: pointer;
     display: flex;
     align-items: center;
     min-height: 40px;
+    background-color: #2d2d2d;
+    color: #e0e0e0;
 }
 
 /* 如果需要，可以調整左右列的樣式 */
@@ -82,10 +88,12 @@ body {
 
 #vocabularyRangeContainer {
     margin: 5px 0;
-    width: 300px;
+    width: 100%;
+    max-width: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0 auto;
 }
 
 #vocabularyRange {
@@ -114,14 +122,14 @@ body {
 #applyRange {
     margin-top: 5px;
     padding: 5px 10px;
-    background-color: #4CAF50;
+    background-color: #2196F3;
     color: white;
     border: none;
     cursor: pointer;
 }
 
 #applyRange:hover {
-    background-color: #45a049;
+    background-color: #1976D2;
 }
 
 /* 添加或修改以下樣式 */
@@ -138,10 +146,10 @@ body {
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: #2d2d2d;
+    border: 1px solid #404040;
     margin: 15% auto;
     padding: 20px;
-    border: 1px solid #888;
     width: 80%;
     max-width: 600px;
     position: relative;
@@ -161,7 +169,7 @@ body {
 }
 
 .close {
-    color: #aaa;
+    color: #e0e0e0;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -170,7 +178,7 @@ body {
 
 .close:hover,
 .close:focus {
-    color: black;
+    color: #ffffff;
     text-decoration: none;
     cursor: pointer;
 }
@@ -180,9 +188,12 @@ body {
     margin-top: 20px;
     max-height: 300px;
     overflow-y: auto;
-    border: 1px solid #ccc;
+    border: 1px solid #404040;
     padding: 10px;
-    background-color: #f9f9f9;
+    background-color: #2d2d2d;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 #vocabularyList {
@@ -193,7 +204,7 @@ body {
 #vocabularyList li {
     margin-bottom: 5px;
     padding: 5px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #404040;
 }
 
 #vocabularyListSelect {
@@ -214,8 +225,10 @@ body {
     width: 60px;
     padding: 5px;
     margin: 0;
-    border: 1px solid #ccc;
+    border: 1px solid #404040;
     border-radius: 4px;
+    background-color: #2d2d2d;
+    color: #e0e0e0;
 }
 
 .range-inputs input:focus {
@@ -225,21 +238,7 @@ body {
 
 /* 修改標題樣式 */
 h1 {
-    position: fixed;
-    right: 5px;
-    top: 50%;
-    transform: translateY(-50%);
-    writing-mode: vertical-rl;
-    text-orientation: upright;
-    font-size: 0.6rem;
-    letter-spacing: 1px;
-    color: #888;
-    margin: 0;
-    padding: 5px 2px;
-    background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 2px;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    display: none; /* 或者直接從 HTML 中移除 h1 標籤 */
 }
 
 /* 如果需要額外的樣式來調整文字間距 */
@@ -252,13 +251,13 @@ h1 {
 .noUi-target {
     border: none;
     box-shadow: none;
-    background: #e0e0e0;
+    background: #404040;
     height: 6px;
 }
 
 .noUi-handle {
-    border: 2px solid #4CAF50;
-    background: white;
+    border: 2px solid #2196F3;
+    background: #2d2d2d;
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     border-radius: 50%;
     width: 20px !important;
@@ -276,12 +275,12 @@ h1 {
 
 /* 連接線的顏色 */
 .noUi-connect {
-    background: #4CAF50;
+    background: #2196F3;
 }
 
 /* 滑塊懸停效果 */
 .noUi-handle:hover {
-    border-color: #45a049;
+    border-color: #1976D2;
 }
 
 /* 滑塊激活狀態 */
@@ -293,9 +292,162 @@ h1 {
 /* 添加新的容器來處理內容的滾動 */
 .content-container {
     width: 100%;
+    max-width: 600px;
     height: 100%;
     overflow-y: auto;
-    -webkit-overflow-scrolling: touch; /* 為 iOS 提供平滑滾動 */
+    -webkit-overflow-scrolling: touch;
     padding: 10px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 auto;
+}
+
+/* 移除或重置其他元素的 margin */
+#fileInput,
+.settings,
+#vocabularyRangeContainer,
+.file-input-container,
+#vocabularyListSelect,
+select,
+.range-inputs {
+    margin: 0 !important;
+}
+
+/* 調整容器內部元素的間距 */
+.content-container > div {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+/* 調整標籤和選擇框的樣式 */
+label {
+    text-align: right;
+    min-width: 120px; /* 統一標籤寬度 */
+    margin-right: 10px;
+}
+
+select, input[type="file"], input[type="range"], input[type="number"] {
+    flex: 0 1 200px; /* 統一輸入框寬度 */
+    max-width: 200px;
+    background-color: #2d2d2d;
+    border: 1px solid #404040;
+    color: #e0e0e0;
+}
+
+/* 調整 range-inputs 容器 */
+.range-inputs {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+/* 調整檔案輸入和按鈕容器 */
+.file-input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* 調整滑塊容器 */
+#vocabularyRangeContainer {
+    align-items: center;
+    text-align: center;
+}
+
+/* 調整分數顯示 */
+#score {
+    text-align: center;
+    width: 100%;
+}
+
+/* 調整設置區域 */
+.settings {
+    justify-content: center;
+    align-items: center;
+}
+
+/* 調整淡出持續時間的輸入框和標籤 */
+#fadeDuration {
+    width: 150px;
+}
+
+#fadeValue {
+    min-width: 30px;
+    text-align: center;
+}
+
+/* 確保遊戲容器中的卡片也是置中的 */
+.card {
+    justify-content: center;
+    text-align: center;
+}
+
+/* 調整詞彙列表顯示 */
+#vocabularyListDisplay {
+    text-align: center;
+}
+
+#vocabularyList {
+    text-align: center;
+}
+
+#vocabularyList li {
+    text-align: center;
+}
+
+/* 匹配成功時的卡片背景色 */
+.card[style*="background-color"] {
+    background-color: #1976D2 !important;
+}
+
+/* 修改圖片按鈕顏色 */
+.image-button {
+    color: #e0e0e0;
+}
+
+/* 修改滾動條樣式 */
+.content-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.content-container::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+.content-container::-webkit-scrollbar-thumb {
+    background: #404040;
+    border-radius: 4px;
+}
+
+.content-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* 修改選中文字的顏色 */
+::selection {
+    background-color: #2196F3;
+    color: white;
+}
+
+/* 修改 file input 按鈕樣式 */
+input[type="file"]::-webkit-file-upload-button {
+    background-color: #2d2d2d;
+    border: 1px solid #404040;
+    color: #e0e0e0;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+input[type="file"]::-webkit-file-upload-button:hover {
+    background-color: #404040;
 }
