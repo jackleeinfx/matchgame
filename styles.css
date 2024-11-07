@@ -352,65 +352,83 @@ select, input[type="file"], input[type="range"], input[type="number"] {
 
 /* 調整檔案輸入和按鈕容器 */
 .file-input-container {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 10px;
-    width: 100%;
-    max-width: 600px;
+    gap: 4px;
+    justify-content: center;
+    padding: 0;
+    margin: 0 auto;
+    font-size: 0.85em;
+    background-color: transparent;
+    border: none;
 }
 
 #fileInput {
-    max-width: 200px;
+    max-width: 150px;
     font-size: 0.9em;
+    margin: 0;
+    padding: 0;
 }
 
 input[type="file"] {
     width: auto;
-    flex: 0 0 auto;
+    padding: 2px 4px;
 }
 
 input[type="file"]::-webkit-file-upload-button {
-    padding: 3px 8px;
+    padding: 2px 6px;
     font-size: 0.9em;
+    height: 24px;
+    min-width: 60px;
+    margin: 0;
+    border: 1px solid #404040;
+    border-radius: 3px;
+    background-color: #2d2d2d;
 }
 
 #applyRange {
-    padding: 3px 8px;
+    padding: 2px 6px;
     font-size: 0.9em;
-    white-space: nowrap;
+    height: 24px;
+    min-width: 60px;
+    margin: 0;
+    background-color: #2d2d2d;
+    border: 1px solid #404040;
+    border-radius: 3px;
+    color: #e0e0e0;
 }
 
 .voice-mode-container {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 4px;
     white-space: nowrap;
+    padding: 0 6px;
+    margin: 0;
+    height: 24px;
 }
 
 .voice-mode-container label {
     font-size: 0.9em;
     min-width: auto;
+    margin: 0;
 }
 
-/* 調整滑塊容器 */
 #vocabularyRangeContainer {
     align-items: center;
     text-align: center;
 }
 
-/* 調整分數顯示 */
 #score {
     text-align: center;
     width: 100%;
 }
 
-/* 調整設置區域 */
 .settings {
     justify-content: center;
     align-items: center;
 }
 
-/* 調整淡出持續時間的輸入框和標籤 */
 #fadeDuration {
     width: 150px;
 }
@@ -420,13 +438,11 @@ input[type="file"]::-webkit-file-upload-button {
     text-align: center;
 }
 
-/* 確保遊戲容器中的卡片也是置中的 */
 .card {
     justify-content: center;
     text-align: center;
 }
 
-/* 調整詞彙列表顯示 */
 #vocabularyListDisplay {
     text-align: center;
 }
@@ -439,17 +455,14 @@ input[type="file"]::-webkit-file-upload-button {
     text-align: center;
 }
 
-/* 匹配成功時的卡片背景色 */
 .card[style*="background-color"] {
     background-color: #1976D2 !important;
 }
 
-/* 修改圖片按鈕顏色 */
 .image-button {
     color: #e0e0e0;
 }
 
-/* 修改滾動條樣式 */
 .content-container::-webkit-scrollbar {
     width: 8px;
 }
@@ -467,13 +480,11 @@ input[type="file"]::-webkit-file-upload-button {
     background: #555;
 }
 
-/* 修改選中文字的顏色 */
 ::selection {
     background-color: #2196F3;
     color: white;
 }
 
-/* 修改 file input 按鈕樣式 */
 input[type="file"]::-webkit-file-upload-button {
     background-color: #2d2d2d;
     border: 1px solid #404040;
@@ -486,15 +497,13 @@ input[type="file"]::-webkit-file-upload-button:hover {
     background-color: #404040;
 }
 
-/* 添加語音模式勾選框的樣式 */
 #voiceMode {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
+    margin: 0;
     cursor: pointer;
-    accent-color: #2196F3;
 }
 
-/* 語音模式下的文字隱藏樣式 */
 .voice-mode-text {
     font-family: monospace;
     letter-spacing: 2px;
